@@ -1,0 +1,71 @@
+import React, { useState } from "react";
+import TextField from "@material-ui/core/TextField";
+function App() {
+  const [name, setName] = useState("");
+  const [Email, setemail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [list, setList] = useState([]);
+  const submitForm = () => {
+    setList([{ Fname: name, Email: Email, contact: mobile }]);
+  };
+  const deleteForm = () => {
+    setList([{ Fname: name, Email: Email, contact: mobile }]);
+  };
+  return (
+    <div >
+      <TextField
+        id="outlined-basic"
+        label="Outlined"
+        variant="outlined"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+        placeholder="Name"
+        style={{ marginLeft: "25px" }}
+      />
+
+      <TextField
+        id="outlined-basic"
+        label="Outlined"
+        variant="outlined"
+        value={Email}
+        type="Email"
+        onChange={(e) => {
+          setemail(e.target.value);
+        }}
+        placeholder="Email Id"
+        style={{ marginLeft: "25px" }}
+      />
+
+      <TextField
+        id="outlined-basic"
+        label="Outlined"
+        variant="outlined"
+        value={mobile}
+        type="number"
+        onChange={(e) => {
+          setMobile(e.target.value);
+        }}
+        placeholder="Mobile Number"
+        style={{ marginLeft: "25px" }}
+      />
+      <button onClick={submitForm} style={{ marginLeft: "25px" }}>
+        Create
+      </button>
+      <br />
+      <br />
+      <button onClick={deleteForm} style={{ marginLeft: "25px" }}>
+        Delete
+      </button>
+      {list.length > 0 ? (
+        <>
+          <p>name : {list[0].Fname}</p>
+          <p>Email : {list[0].Email}</p>
+          <p>mobile number : {list[0].contact}</p>
+        </>
+      ) : null}
+    </div>
+  );
+}
+export default App;
